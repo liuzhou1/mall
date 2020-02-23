@@ -17,62 +17,68 @@
       </mt-swipe>
     </div>
 
-<!--    <swiper :list="demo01_list" v-model="demo01_index" @on-index-change=""></swiper>-->
-<!--    <view class="page-section page-section-spacing swiper">-->
-<!--      <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" circular="{{circular}}" vertical="{{vertical}}"-->
-<!--              interval="{{interval}}" duration="{{duration}}" previous-margin="{{previousMargin}}px" indicator-active-color="#D5DDF0" next-margin="{{nextMargin}}px">-->
-<!--        <block wx:for="{{url}}" wx:key="*this">-->
-<!--          <swiper-item>-->
-<!--            <img src='{{item}}' class='swiper-item' bindtap='text'></img>-->
-<!--          </swiper-item>-->
-<!--        </block>-->
-<!--      </swiper>-->
-<!--    </view>-->
 
-<!--    <view class='classify'>-->
-<!--      <view>-->
-<!--        <block wx:for="{{postList}}" wx:key="{{}}" wx:for-item="item">-->
-<!--          <view class='classify-box' bindtap='classify' id="{{item.type}}" type="5" val="123">-->
-<!--            <image src='{{item.url}}' class="img"></image>-->
-<!--            <text>{{item.title}}</text>-->
-<!--          </view>-->
-<!--        </block>-->
-<!--      </view>-->
-<!--    </view>-->
+    <div class='classify'>
+      <div>
+        <span v-for="item in postList" :key="index">
+          <div class='classify-box' bindtap='classify' >
+            <img :src='item.url' class="img">
+            <span>{{item.title}}</span>
+          </div>
+        </span>
+      </div>
+    </div>
 
-<!--    <view class='news'>-->
-<!--      <view class='news-title'>-->
-<!--        <img src='/images/tab/news.png'></img>-->
+<!--    <div class='news'>-->
+<!--      <div class='news-title'>-->
+<!--        <img src='/imgs/tab/news.png'></img>-->
 <!--        <text>新闻头条</text>-->
-<!--      </view>-->
-<!--      <view class='news-content'>-->
-<!--        <view></view>-->
-<!--      </view>-->
-<!--    </view>-->
+<!--      </div>-->
+<!--      <div class='news-content'>-->
+<!--        <div></div>-->
+<!--      </div>-->
+<!--    </div>-->
 
-<!--    <view class='commodity'>-->
+<!--    <div class='commodity'>-->
 <!--      <block wx:for="{{shoppingData}}" wx:key="{{}}" wx:for-item="item">-->
-<!--        <view class='content'id="{{item.id}}" bindtap='commodity'>-->
-<!--          <image src='{{item.pic_path}}'></image>-->
-<!--          <view class='commodity-content'>{{item.title}}</view>-->
-<!--          <view class='price'>￥{{item.price}}<text class='pricewap'>￥{{item.priceWap}}</text><text class='sold'>已售{{item.num}}件</text>-->
-<!--          </view>-->
-<!--        </view>-->
+<!--        <div class='content'id="{{item.id}}" bindtap='commodity'>-->
+<!--          <img src='{{item.pic_path}}'></img>-->
+<!--          <div class='commodity-content'>{{item.title}}</div>-->
+<!--          <div class='price'>￥{{item.price}}<text class='pricewap'>￥{{item.priceWap}}</text><text class='sold'>已售{{item.num}}件</text>-->
+<!--          </div>-->
+<!--        </div>-->
 <!--      </block>-->
-<!--    </view>-->
-    <view class='foot'>
+<!--    </div>-->
+    <div class='foot'>
 
       <text>没有更多了！</text>
-    </view>
+    </div>
   </div>
 </template>
 
 <script>
+  import fruits from '@/assets/img/fruits.png'
+  import compute from '@/assets/img/compute.png'
+  import medical from '@/assets/img/medical.png'
+  import womenWear from '@/assets/img/womenWear.png'
+  import menWear from '@/assets/img/menWear.png'
+  import phone from '@/assets/img/phone.png'
+  import toy from '@/assets/img/toy.png'
+  import infant from '@/assets/img/infant.png'
 export default {
   name: 'HelloWorld',
   data () {
     return {
-
+      postList:[
+        {"url":fruits,"title":"水果","type":"5"},
+        {"url":compute,"title":"电脑","type":"4"},
+        {"url":medical,"title":"医疗","type":"7"},
+        {"url":womenWear,"title":"女装","type":"1"},
+        {"url":menWear,"title":"男装","type":"6"},
+        {"url":phone,"title":"手机","type":"2"},
+        {"url":toy,"title":"玩具","type":"8"},
+        {"url":infant,"title":"幼儿","type":"9"},
+      ]
     }
   }
 }
@@ -159,5 +165,29 @@ export default {
     width: 100%;
     border-radius: 6px;
     overflow: hidden;
+  }
+
+
+  .classify-box {
+    width: 25%;
+    display: inline-block;
+    text-align: center;
+    margin: 8px 0px;
+    color: #999;
+    font-size: 0.8rem;
+  }
+
+  .img {
+    height: 2rem;
+    margin: 0 25%;
+  }
+
+  .classify {
+    width: 96%;
+    margin: 0 auto;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    margin-top: 9px;
+    border-radius: 5px;
   }
 </style>
