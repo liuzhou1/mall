@@ -29,30 +29,36 @@
       </div>
     </div>
 
-<!--    <div class='news'>-->
-<!--      <div class='news-title'>-->
-<!--        <img src='/imgs/tab/news.png'></img>-->
-<!--        <text>新闻头条</text>-->
-<!--      </div>-->
-<!--      <div class='news-content'>-->
-<!--        <div></div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class='commodity'>-->
-<!--      <block wx:for="{{shoppingData}}" wx:key="{{}}" wx:for-item="item">-->
-<!--        <div class='content'id="{{item.id}}" bindtap='commodity'>-->
-<!--          <img src='{{item.pic_path}}'></img>-->
-<!--          <div class='commodity-content'>{{item.title}}</div>-->
-<!--          <div class='price'>￥{{item.price}}<text class='pricewap'>￥{{item.priceWap}}</text><text class='sold'>已售{{item.num}}件</text>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </block>-->
-<!--    </div>-->
-    <div class='foot'>
-
-      <text>没有更多了！</text>
+    <div class='news'>
+      <div class='news-title'>
+        <img src='@/assets/img/news.png'/>
+        <span>新闻头条</span>
+      </div>
     </div>
+
+
+<!--    <div class='foot'>-->
+
+<!--      <text>没有更多了！</text>-->
+<!--    </div>-->
+    <mt-tabbar v-model="selected">
+      <mt-tab-item id="首页">
+        <img slot="icon" src="@/assets/img/my-select.png">
+        首页
+      </mt-tab-item>
+      <mt-tab-item id="订单">
+        <img slot="icon" src="@/assets/img/my-select.png">
+        订单
+      </mt-tab-item>
+      <mt-tab-item id="购物车">
+        <img slot="icon" src="@/assets/img/my-select.png">
+        购物车
+      </mt-tab-item>
+      <mt-tab-item id="我的">
+        <img slot="icon" src="@/assets/img/my-select.png">
+        我的
+      </mt-tab-item>
+    </mt-tabbar>
   </div>
 </template>
 
@@ -184,10 +190,33 @@ export default {
 
   .classify {
     width: 96%;
-    margin: 0 auto;
+    margin: 8px auto 0;
     border: 1px solid #dcdcdc;
     background-color: #fff;
-    margin-top: 9px;
     border-radius: 5px;
+  }
+
+  .news {
+    width: 96%;
+    margin: 8px auto 0;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: left;
+  }
+
+  .news img {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 1rem;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+  }
+
+  .news-title {
+    margin: 0.5rem 0;
+    color: #999;
+    font-size: 0.9rem;
   }
 </style>
