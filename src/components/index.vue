@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <header class="hasManyCity" id="header">
       <div  class="cityBtn">亳州</div>
       <div id="locaitonBtn" class="link-url locaitonBtn"></div>
@@ -20,7 +20,7 @@
 
     <div class='classify'>
       <div>
-        <span v-for="item in postList" :key="index">
+        <span v-for="(item,index) in postList" :key="index">
           <div class='classify-box' bindtap='classify' >
             <img :src='item.url' class="img">
             <span>{{item.title}}</span>
@@ -32,33 +32,28 @@
     <div class='news'>
       <div class='news-title'>
         <img src='@/assets/img/news.png'/>
-        <span>新闻头条</span>
+        <span>商品抢购</span>
       </div>
     </div>
 
 
-<!--    <div class='foot'>-->
+    <div class='commodity'>
+      <span v-for="(item,index) in shoppingData" :key="index">
+        <div class='content' :id="item.id" @click='commodity'>
+          <img :src='item.pic_path'>
+          <div class='commodity-content'>{{item.title}}</div>
+          <div class='price'>￥{{item.price}}<span class='sold'>已售{{item.num}}件</span>
+          </div>
+        </div>
+      </span>
+    </div>
 
-<!--      <text>没有更多了！</text>-->
-<!--    </div>-->
-    <mt-tabbar v-model="selected">
-      <mt-tab-item id="首页">
-        <img slot="icon" src="@/assets/img/my-select.png">
-        首页
-      </mt-tab-item>
-      <mt-tab-item id="订单">
-        <img slot="icon" src="@/assets/img/my-select.png">
-        订单
-      </mt-tab-item>
-      <mt-tab-item id="购物车">
-        <img slot="icon" src="@/assets/img/my-select.png">
-        购物车
-      </mt-tab-item>
-      <mt-tab-item id="我的">
-        <img slot="icon" src="@/assets/img/my-select.png">
-        我的
-      </mt-tab-item>
-    </mt-tabbar>
+    <div class='foot'>
+      <img src='@/assets/img/no-commoditie.png' class='no-img'>
+      <span>没有更多了！</span>
+    </div>
+
+    <tabBar :home="true"></tabBar>
   </div>
 </template>
 
@@ -71,10 +66,21 @@
   import phone from '@/assets/img/phone.png'
   import toy from '@/assets/img/toy.png'
   import infant from '@/assets/img/infant.png'
+
+  import computer from '@/assets/test-img/computer.jpg'
+  import computer1 from '@/assets/test-img/computer1.jpg'
+  import computer2 from '@/assets/test-img/computer2.jpg'
+  import computer3 from '@/assets/test-img/computer3.jpg'
+  import apple from '@/assets/test-img/apple.jpg'
+
+  import tabBar from '@/components/tabBar.vue'
 export default {
-  name: 'HelloWorld',
+  components:{
+    tabBar
+  },
   data () {
     return {
+      selected: '0',
       postList:[
         {"url":fruits,"title":"水果","type":"5"},
         {"url":compute,"title":"电脑","type":"4"},
@@ -84,7 +90,20 @@ export default {
         {"url":phone,"title":"手机","type":"2"},
         {"url":toy,"title":"玩具","type":"8"},
         {"url":infant,"title":"幼儿","type":"9"},
-      ]
+      ],
+      shoppingData:[
+        {"id":"11","location":"广东 深圳","nick":"摩天酷旗舰店","num":"12","pic_path":computer,"price":"1798","priceWap":"1398","title":"【正品保证】2018款 金属时尚超极本/背光键盘/送券100元","type":"4","shopInfo":[computer,computer1,computer2,computer3],"hint":["i5游戏本","4G独显"]}
+        ,{"id":"11","location":"广东 深圳","nick":"摩天酷旗舰店","num":"12","pic_path":apple,"price":"1798","priceWap":"1398","title":"【正品保证】2018款 金属时尚超极本/背光键盘/送券100元","type":"4","shopInfo":[computer,computer1,computer2,computer3],"hint":["i5游戏本","4G独显"]}
+        ,{"id":"11","location":"广东 深圳","nick":"摩天酷旗舰店","num":"12","pic_path":computer,"price":"1798","priceWap":"1398","title":"【正品保证】2018款 金属时尚超极本/背光键盘/送券100元","type":"4","shopInfo":[computer,computer1,computer2,computer3],"hint":["i5游戏本","4G独显"]}
+        ,{"id":"11","location":"广东 深圳","nick":"摩天酷旗舰店","num":"12","pic_path":computer,"price":"1798","priceWap":"1398","title":"【正品保证】2018款 金属时尚超极本/背光键盘/送券100元","type":"4","shopInfo":[computer,computer1,computer2,computer3],"hint":["i5游戏本","4G独显"]}
+        ,{"id":"11","location":"广东 深圳","nick":"摩天酷旗舰店","num":"12","pic_path":computer,"price":"1798","priceWap":"1398","title":"【正品保证】2018款 金属时尚超极本/背光键盘/送券100元","type":"4","shopInfo":[computer,computer1,computer2,computer3],"hint":["i5游戏本","4G独显"]}
+        ,{"id":"11","location":"广东 深圳","nick":"摩天酷旗舰店","num":"12","pic_path":computer,"price":"1798","priceWap":"1398","title":"【正品保证】2018款 金属时尚超极本/背光键盘/送券100元","type":"4","shopInfo":[computer,computer1,computer2,computer3],"hint":["i5游戏本","4G独显"]}
+      ],
+    }
+  },
+  methods: {
+    commodity(){
+      console.log(1)
     }
   }
 }
@@ -158,6 +177,7 @@ export default {
     position: fixed;
     right: 0;
     width: 20%;
+    text-align: center;
   }
 
   .swipe-box{
@@ -218,5 +238,74 @@ export default {
     margin: 0.5rem 0;
     color: #999;
     font-size: 0.9rem;
+  }
+
+  .commodity {
+    width: 96%;
+    margin: 8px auto 2px;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .content {
+    width: 50%;
+    display: inline-block;
+    margin: 5px 0;
+  }
+
+  .commodity-content {
+    font-size: 0.7rem;
+    width: 96%;
+    margin: 0.2rem auto;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .price {
+    font-size: 1rem;
+    color: #f40;
+    width: 95%;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .pricewap {
+    font-size: 0.7rem;
+    color: #999;
+    text-decoration: line-through;
+  }
+
+  .sold {
+    font-size: 0.7rem;
+    color: #999;
+    display: inline-block;
+    position: relative;
+    float: right;
+    top: 7px;
+    margin-right: 2%;
+  }
+
+  .content>img {
+    width: 95%;
+    margin-left: 2%;
+    height: 10.5rem;
+  }
+
+  .no-img{
+    width: 3rem;
+    height: 1.7rem;
+  }
+  .foot{
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    color: #727171;
+    font-size: 0.8rem;
+    padding:0.3rem 0;
+    margin-bottom: 55px;
   }
 </style>
